@@ -1,0 +1,32 @@
+{% extends 'partials/base.html' %}
+
+{% block conteudo %}
+    <div style="height: 850px;"> 
+        <div class="row" style="padding-top: 13%;"> 
+            <div class="col-md-6 principal_descricao text-light">
+                <h1 class="principal_texto">Comunidad!</h1>
+                <h4>Comunidad ajuda você a se conectar com as pessoas e compartilhar conteudos em comuns. Você pode carregar ou baixar arquivos com intuito de, e somente de, compartilhar o que você mais ama. </h2>
+            </div>
+            <div class="col-md-3 container">
+                <div class="container" id="login">
+                    <br><br>
+                    <form method="post">
+                        {% csrf_token %}
+                        <input type="text" name="Login" class="form-control" placeholder="Login" required="required"><br>
+                        <input type="password" name="Senha" placeholder="Senha" class="form-control" required="required"><br>
+                        <div style="text-align: center;">
+                            <input class="btn btn-primary" type="submit" value="Salvar" name="botao">
+                            <a href="https://site-conteudo.azurewebsites.net/cadastro/">Cadastre-se</a>
+                        </div>
+                    </form>
+                    <br>
+                    <div id="error">
+                        {% if msg %}
+                            {{ msg }}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

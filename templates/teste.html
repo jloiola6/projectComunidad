@@ -1,0 +1,14 @@
+{% extends 'partials/base.html' %}
+
+{% block conteudo %}
+{% load static %}
+    <br><br><br><br>
+    {{ mainCarrosel }} <br>
+    {{ carrosel }} <br>
+    {{ mainCard }} <br>
+    {{ card }} <br>
+    {{ conteudo }}
+    <div class="d-print-none">Exibe apenas em telas (esconde em impressões).</div>
+    <div class="d-none d-print-block">Exibe apenas em impressões (Esconde em telas).</div>
+    <div class="d-none d-lg-block d-print-block">Esconde em telas grandes, mas sempre mostra nas impressões.</div>
+{% endblock %}

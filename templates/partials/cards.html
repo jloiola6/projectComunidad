@@ -1,0 +1,33 @@
+{% load static %}
+    <div id="d-none d-lg-block d-print-block multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
+        <ol class="d-none d-lg-block d-print-block carousel-indicators">
+            <li data-target="#multi-item-example" data-slide-to="0" class="active"></li>
+            <li data-target="#multi-item-example" data-slide-to="1"></li>
+        </ol>
+        <div class="d-none d-lg-block d-print-block carousel-inner" role="listbox">
+            <div class="carousel-item active">
+                {% for item in mainCard %}
+                    <div class="col-md-3" style="float:left; background-color: #1b1b1b;">
+                        <div class="card mb-2">
+                            <a href="https://site-conteudo.azurewebsites.net/conteudo?nome={{ item.titulo }}"><img class="card-img-top" src="{% static item.imagem %}" height="400px" width="200px" alt="Card image cap"></a>
+                            <div class="card-body" style="height: 150px;">
+                                <h2 class="card-title">{{ item.titulo }}</h2>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="carousel-item">
+                {% for item in card %}
+                    <div class="col-md-3" style="float:left; background-color: #1b1b1b;">
+                        <div class="card mb-2">
+                            <a href="https://site-conteudo.azurewebsites.net/conteudo?nome={{ item.titulo }}"><img class="card-img-top" src="{% static item.imagem %}" height="400px" width="200px" alt="Card image cap"></a>
+                            <div class="card-body" style="height: 150px;">
+                                <h4 class="card-title">{{ item.titulo }}</h4>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>

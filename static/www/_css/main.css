@@ -1,0 +1,82 @@
+.imagem{
+    -webkit-filter:grayscale(0%);
+    text-align: center;
+}
+
+a:hover{
+    -webkit-filter:grayscale(10%);
+    transition: 0.1s;
+}
+
+#carouselExampleSlidesOnly{
+    background-color: rgba(12, 10, 10, 0.8);
+}
+
+.card:hover{
+    transform: scale(1.1);
+}
+
+.cadastro{
+    width: 500px; 
+    margin-left: 5%; 
+    margin-top: -4%; 
+    text-align: center;
+    background-color: gray;
+    border-radius: 1%;
+}
+
+#conteudo{
+    padding-top: 1%;
+}
+
+.principal_texto{
+    font-size: 2cm;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#login{
+    width: 350px;
+    height: 250px;
+    background-color: gray;
+    border-radius: 5%;
+}
+.principal_descricao{
+    margin-left: 12%;
+}
+
+#detalhes{
+    text-align: center;
+    margin: 0 auto;
+    width: fill;
+    padding: 15px 0;
+    background-color: #1b1b1b;
+    color: white;
+}
+
+#final{
+    text-align: center;
+    background-color: white;
+}
+
+.final{
+    margin-left: 250px;
+    text-align: center;
+}
+
+.texto{
+    text-align: center;
+    height: 250px;
+    background-color: rgb(196, 192, 194);
+}
+
+body{
+    background-color: #1b1b1b;
+}
+
+.rodape{
+    height: 400px;
+}
+
+img{
+    object-fit: cover;
+}

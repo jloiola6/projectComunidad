@@ -1,0 +1,54 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+{% block conteudo %}
+    <!-- <br><br> -->
+    <div class="container">
+        <div class="row" style=" text-align: center; padding-top: 7%;">
+            <div class="col-md-7 col-sm-12">
+                    <img src="{% static conteudo.imagem %}" width='300' height='450' alt="conteudo.titulo">
+            </div>
+            <div class="col-md-5 text-light" style="margin: 2% -15%; text-align: left;" >
+                <h5>Titulo: {{ conteudo.titulo }}</h5>
+                <h5>Tamanho: {{ conteudo.tamanho }}</h5>
+                <h5>Lançamento: {{ conteudo.lancamento }}</h5>
+                <h5>Audio: {{ conteudo.audio }}</h5>
+                <h5>Legenda: {{ legenda }}</h5>
+                <h5>Formato: {{ conteudo.formato }}</h5>
+                <h5>Duraçao: {{ conteudo.duracao }}</h5>
+                <h5>Qualidade de Áudio: {{ conteudo.qualidadeAudio }}</h5>
+                <h5>Qualidade do Vídeo: {{ conteudo.qualidadeVideo }}</h5>
+                <br>
+                <a class="btn btn-primary" href="{{ conteudo.linkArquivo }}" role="button">Baixar</a>
+            </div>
+        </div>
+    </div>
+    <br>
+    {% if adm == True %}
+        <br>
+        <div style="text-align: center;">
+            {% if status == True %}
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#CenterAprovar">Aprovar</button>
+            {% endif %}
+            <a class="btn btn-primary" href="https://site-conteudo.azurewebsites.net/adicionar?id={{ conteudo.id }}" role="button">Editar</a>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#CenterReprovar">Reprovar</button>
+        </div>
+        <br>
+    {% endif %}
+    <HR width="30%" size=auto noshade /> 
+    <br>
+    <div id="detalhes">
+        <div class="row" style=" text-align: center; padding-bottom: 7%;">
+            <div class="col-md-7 col-sm-12">
+                <iframe width="560" height="315" src="{{ link }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="col-md-5" style="margin: 2% -10%; text-align: left;" >
+                <h1>Sinopse:</h1>
+                <p>{{ conteudo.descricao }}</p>
+            </div>
+        </div>
+    </div>
+    {% include 'partials/modalAprovar.html' %}
+    {% include 'partials/modalReprovar.html' %}
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+{% endblock %}

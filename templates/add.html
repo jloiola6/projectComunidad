@@ -1,0 +1,37 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+{% block conteudo %}
+
+    <div style="padding-top: 13%; height: 1450px;">
+        <div class="row" style=" text-align: center;">
+            <div class="d-none d-lg-block d-print-block col-md-6 principal_descricao text-light" >
+                <h1 class="principal_texto" style="text-align: left;">Conteudo</h1>
+                <h4 style="text-align: left;">Você poderá compartilhar magnet links de arquivos torrents para contribuir com a Comunidad! Por favor preencha todos os campos e compartilhe um conteudo de alta qualidade.</h2>
+            </div>
+            <form class="cadastro" id="conteudo" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% for campo in new.visible_fields %}
+                <div class="form-group">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        {% if campo.erros %}
+                        <div class="alert-danger" align="center">
+                            {% for error in campo.errors %}
+                                {{ error|striptags }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    {{ campo }}
+                    </div>
+                </div>
+                {% endfor %}
+                Selecione uma imagem: <input type="file" name="myFile">
+                <div style="padding: 3%;">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Centersalvar">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    {% include 'partials/modalSalvar.html' %}
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+{% endblock %}

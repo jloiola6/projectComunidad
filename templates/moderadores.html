@@ -1,0 +1,33 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+{% block conteudo %}
+    <table class="container table table-dark" style="padding-bottom: 10%; margin-top: 5%;">
+        <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Nome de usuário</th>
+            <th scope="col">Email</th>
+            <th scope="col">ADM</th>
+
+        </tr>
+        </thead>
+        {% for item in usuarios %}
+            <tbody>
+                <tr>
+                    <th scope="row">{{ item.id }}</th>
+                    <td>{{ item.nome }}</td>
+                    <td>{{ item.login }}</td>
+                    <td>{{ item.email }}</td>
+                    <td>{{ item.superAdm }}</td>
+                    {% if item.superAdm == 'S' %}
+                        <td><a class="btn btn-primary" href="https://site-conteudo.azurewebsites.net/retirarAdm?id={{ item.id }}">Retirar Adm</a></td>
+                    {% else %}
+                        <td><a class="btn btn-primary" href="https://site-conteudo.azurewebsites.net/tornarAdm?id={{ item.id }}">Tornar Adm</a></td>
+                    {% endif %}
+                </tr>
+            </tbody>
+        {% endfor %}
+    </table>
+{% endblock %}

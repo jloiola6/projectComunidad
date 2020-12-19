@@ -1,0 +1,38 @@
+{% extends 'partials/base.html' %}
+
+{% block conteudo %}
+    <div style="padding-top: 13%; height: 850px;">
+        <div class="row" style=" text-align: center;">
+            <div class="d-none d-lg-block d-print-block col-md-6 principal_descricao text-light" >
+                <h1 class="principal_texto" style="text-align: left;">Cadastro</h1>
+                <h4 style="text-align: left;">Com a realização do cadastro você poderá contribuir com a Comunidad! compartilhando conteudo com os outros.</h2>
+            </div>
+            <form class="cadastro" method="POST">
+                {% csrf_token %}
+                 <br><br>
+                {% for campo in form.visible_fields %}
+                    <div class="form-group">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            {% if campo.erros %}
+                                <div class="alert-danger" align="center">
+                                    {% for error in campo.errors %}
+                                        {{ error|striptags }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                            {{ campo }}
+                        </div>
+                    </div>
+                {% endfor %}
+                <!-- <a class="btn btn-primary" type="submit" role="button">Baixar</a> -->
+                <input class="btn btn-primary" type="submit" value="Cadastrar">
+                 <div id="error">
+                     {% if msg %}
+                     {{ msg }}
+                     {% endif %}
+                 </div>
+                 <br>
+             </form>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% load static %}
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+    <img src="{% static 'www/_img/logo.png' %}" width=5% height=5%>
+    <a class="navbar-brand" href="https://site-conteudo.azurewebsites.net/">Comunidad!</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Alterna navegação">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+        <a class="nav-item nav-link active" href="https://site-conteudo.azurewebsites.net/">Home <span class="sr-only">(Página atual)</span></a>
+        <!-- <a class="nav-item nav-link" href="#">Destaques</a>
+        <a class="nav-item nav-link" href="#">Preços</a> -->
+        {% if user == True %}
+            <a class="nav-item nav-link active" href="https://site-conteudo.azurewebsites.net/adicionar">Adicionar</a></li>
+            {% if adm == True %}
+                <a class="nav-item nav-link active" href="https://site-conteudo.azurewebsites.net/aprovar">Aprovar</a></li>
+            {% endif %}
+            {% if moderador == True %}
+                <a class="nav-item nav-link active" href="https://site-conteudo.azurewebsites.net/moderadores">Moderadores</a></li>
+            {% endif %}
+        {% else %}
+            <a class="nav-item nav-link active" href="https://site-conteudo.azurewebsites.net/entrar">Entrar</a></li>
+        {% endif %}
+        </div>
+    </div>
+    <form class="d-none d-lg-block d-print-block form-inline">
+        <form class="form-inline" action="." method="GET">
+            <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" name="pesquisa" aria-label="Pesquisar">
+        </form>
+    </form>
+        {% if user == True%}
+            <a class="d-none d-lg-block d-print-block btn btn-dark" href="https://site-conteudo.azurewebsites.net/logout">Logout</a></li>
+        {% endif %}
+</nav>
+<br><br>

@@ -1,0 +1,17 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+{% block conteudo %}
+    <div class="col-lg-9 container-fluid" style="padding: 5%;">
+        <div class="row">
+            {% for item in conteudo %}
+            <div class="card" style="width: 18rem; margin: 15px 2%;">
+                <a href="https://site-conteudo.azurewebsites.netconteudo?nome={{ item.titulo }}"><img class="card-img-top" src="{% static item.imagem %}" height="450px" width="300px" alt="slide"></a>
+                    <div class="card-body">
+                    <h5 class="card-title">{{ item.titulo }}</h5>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
