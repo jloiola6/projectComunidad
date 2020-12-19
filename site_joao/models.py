@@ -29,11 +29,14 @@ class Conteudo(models.Model):
 
     @property
     def path_arquivo(self):
-        return str(self.arquivo).replace('../JT','')
+        return str(self.arquivo).replace('..projectComunidad','')
 
     @property
     def path_image(self):
-        return str(self.imagem).replace('../JT','')
+        print('-'*80)
+        print(self.imagem)
+        print('-'*80)
+        return str(self.imagem).replace('../projectComunidad','')
 
 class Genero(models.Model):
     genero = models.CharField('Gênero', max_length=25)

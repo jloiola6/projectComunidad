@@ -23,12 +23,14 @@ def main(request):
             moderador = True
         except:
             pass
-
+    
     mainCarrosel = Conteudo.objects.filter(status= 'S').order_by('-id')[0]
     carrosel = Conteudo.objects.filter(status= 'S').order_by('-id')[1:3]
     mainCard = Conteudo.objects.filter(status= 'S').order_by('-id')[3:7]
     card = Conteudo.objects.filter(status= 'S').order_by('-id')[7:11]
     conteudo = Conteudo.objects.filter(status= 'S').order_by('-id')[11:]
+    print('='*80)
+    print(mainCarrosel.imagem)
 
     buscar = request.GET.get('pesquisa')
     if buscar:

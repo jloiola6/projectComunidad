@@ -9,7 +9,7 @@
                 {% for item in mainCard %}
                     <div class="col-md-3" style="float:left; background-color: #1b1b1b;">
                         <div class="card mb-2">
-                            <a href="https://site-conteudo.azurewebsites.net/conteudo?nome={{ item.titulo }}"><img class="card-img-top" src="{% static item.imagem %}" height="400px" width="200px" alt="Card image cap"></a>
+                            <a href="https://site-conteudo.azurewebsites.net/conteudo?nome={{ item.titulo }}"><img class="card-img-top" src="{% static item.path_image %}" height="400px" width="200px" alt="Card image cap"></a>
                             <div class="card-body" style="height: 150px;">
                                 <h2 class="card-title">{{ item.titulo }}</h2>
                             </div>
@@ -21,7 +21,7 @@
                 {% for item in card %}
                     <div class="col-md-3" style="float:left; background-color: #1b1b1b;">
                         <div class="card mb-2">
-                            <a href="https://site-conteudo.azurewebsites.net/conteudo?nome={{ item.titulo }}"><img class="card-img-top" src="{% static item.imagem %}" height="400px" width="200px" alt="Card image cap"></a>
+                            <a href="https://site-conteudo.azurewebsites.net/conteudo?nome={{ item.titulo }}"><img class="card-img-top" src="{% static item.path_image %}" height="400px" width="200px" alt="Card image cap"></a>
                             <div class="card-body" style="height: 150px;">
                                 <h4 class="card-title">{{ item.titulo }}</h4>
                             </div>

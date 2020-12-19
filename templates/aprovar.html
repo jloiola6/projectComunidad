@@ -6,7 +6,7 @@
         <div class="row">
             {% for item in conteudo %}
             <div class="card" style="width: 18rem; margin: 15px 2%;">
-                <a href="https://site-conteudo.azurewebsites.netconteudo?nome={{ item.titulo }}"><img class="card-img-top" src="{% static item.imagem %}" height="450px" width="300px" alt="slide"></a>
+                <a href="https://site-conteudo.azurewebsites.netconteudo?nome={{ item.titulo }}"><img class="card-img-top" src="{% static item.path_image %}" height="450px" width="300px" alt="slide"></a>
                     <div class="card-body">
                     <h5 class="card-title">{{ item.titulo }}</h5>
                     </div>
