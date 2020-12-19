@@ -4,6 +4,7 @@ from django.template.response import TemplateResponse
 from site_joao.uploads import handle_uploaded_file
 from site_joao.models import *
 from site_joao.form import *
+from django.shortcuts import render, get_object_or_404
 
 
 
@@ -29,8 +30,6 @@ def main(request):
     mainCard = Conteudo.objects.filter(status= 'S').order_by('-id')[3:7]
     card = Conteudo.objects.filter(status= 'S').order_by('-id')[7:11]
     conteudo = Conteudo.objects.filter(status= 'S').order_by('-id')[11:]
-    print('='*80)
-    print(mainCarrosel.imagem)
 
     buscar = request.GET.get('pesquisa')
     if buscar:
@@ -94,7 +93,10 @@ def conteudo(request):
         legenda = 'Contém legenda'
 
     link = conteudo.linkYoutube.split('watch?v=')
-    link = link[0]+'embed/'+link[1]
+    try:
+        link = link[0]+'embed/'+link[1]
+    except IndexError:
+        link = ''
 
     return TemplateResponse(request, 'conteudo.html', locals())
 
@@ -180,7 +182,8 @@ def login(request):
             login = request.POST.get('Login')
             senha = request.POST.get('Senha')
             
-            user = Usuario.objects.get(login= login, senha= senha)
+            user = get_object_or_404(Usuario, login= login, senha= senha) 
+            # user = Usuario.objects.get(login= login, senha= senha)
             if user:
                 request.session['id'] = user.id
                 return HttpResponseRedirect('/')
@@ -269,14 +272,19 @@ def adicionar(request):
                 new = FormConteudo(request.POST, request.FILES, instance=conteudo_existente)
             else:
                 new = FormConteudo(request.POST, request.FILES)
-
-            nomeImg = 'imagem.' + str(request.FILES.get('myFile')).split('.')[-1]
+            editarArquivo = False
+            if request.FILES.get('myFile'):
+                editarArquivo = True
+                nomeImg = 'imagem.' + str(request.FILES.get('myFile')).split('.')[-1]
+                if 'jpg' in nomeImg:
+                    nomeImg = 'imagem.png'
             tituloArquivo = request.POST.get('titulo')
 
             if new.is_valid():
                 conteudo = new.save()
-                upload_imagem = handle_uploaded_file(request.FILES['myFile'], nomeImg, tituloArquivo)
-                conteudo.imagem = upload_imagem
+                if editarArquivo:
+                    upload_imagem = handle_uploaded_file(request.FILES['myFile'], nomeImg, tituloArquivo)
+                    conteudo.imagem = upload_imagem
                 conteudo.status = 'N'
                 conteudo.save()
                 return HttpResponseRedirect('/')
